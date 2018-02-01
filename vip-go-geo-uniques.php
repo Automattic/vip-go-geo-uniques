@@ -18,7 +18,7 @@ class VIP_Go_Geo_Uniques {
 
 	static function get_country_code() {
 		if ( ! empty( $_SERVER['HTTP_X_COUNTRY_CODE'] ) ) {
-			$loc = $_SERVER['HTTP_X_COUNTRY_CODE'];
+			$loc = strtolower( $_SERVER['HTTP_X_COUNTRY_CODE'] );
 
 			if ( self::is_valid_location( $loc ) ) {
 				return $loc;
@@ -33,11 +33,11 @@ class VIP_Go_Geo_Uniques {
 	}
 
 	static function set_default_location( $loc ) {
-		self::$default_location = $loc;
+		self::$default_location = strtolower( $loc );
 	}
 
 	static function add_location( $loc ) {
-		self::$supported_locations[] = $loc;
+		self::$supported_locations[] = strtolower( $loc );
 		return true;
 	}
 
