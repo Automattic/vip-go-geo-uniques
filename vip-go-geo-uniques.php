@@ -2,7 +2,7 @@
 /**
  * Plugin Name: VIP Go Geo Uniques
  * Description: Varnish-friendly way to handle geo-targetting of users at a specific set of locations.
- * Version: 0.1.0
+ * Version: 0.1.01
  * Author: Automattic, WordPress VIP
  * License: GPLv2
  **/
@@ -17,8 +17,8 @@ class VIP_Go_Geo_Uniques {
 	}
 
 	static function get_country_code() {
-		if ( ! empty( $_SERVER['HTTP_X_COUNTRY_CODE'] ) ) {
-			$loc = $_SERVER['HTTP_X_COUNTRY_CODE'];
+		if ( ! empty( $_SERVER['GEOIP_COUNTRY_CODE'] ) ) {
+			$loc = $_SERVER['GEOIP_COUNTRY_CODE'];
 
 			if ( self::is_valid_location( $loc ) ) {
 				return $loc;
