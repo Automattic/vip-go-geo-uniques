@@ -2,7 +2,7 @@
 /**
  * Plugin Name: VIP Go Geo Uniques
  * Description: Varnish-friendly way to handle geo-targetting of users at a specific set of locations.
- * Version: 0.1.0
+ * Version: 0.1.01
  * Author: Automattic, WordPress VIP
  * License: GPLv2
  **/
