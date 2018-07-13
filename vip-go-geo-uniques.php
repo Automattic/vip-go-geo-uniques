@@ -18,7 +18,7 @@ class VIP_Go_Geo_Uniques {
 
 	static function get_country_code() {
 		if ( isset( $_SERVER['GEOIP_COUNTRY_CODE'] ) && ! empty( $_SERVER['GEOIP_COUNTRY_CODE'] ) ) {
-			$loc = $_SERVER['GEOIP_COUNTRY_CODE'];
+			$loc = sanitize_text_field( $_SERVER['GEOIP_COUNTRY_CODE'] );
 
 			if ( self::is_valid_location( $loc ) ) {
 				return $loc;
