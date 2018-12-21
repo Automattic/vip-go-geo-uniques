@@ -45,6 +45,10 @@ class VIP_Go_Geo_Uniques {
 		return in_array( $loc, self::$supported_locations, true );
 	}
 
+	static function get_registered_locations() {
+		return static::$supported_locations;
+	}
+
 	function init() {
 		if ( is_admin() ) {
 			return;
