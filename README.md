@@ -23,7 +23,7 @@ Adding geo targeting to your VIP Go code takes two parts:
 
 ## Loading the VIP Go Geo Uniques plugin
 
-As the VIP Go Geo Uniques plugin requires configuration in code, we recommend loading this plugin using the wpcom_vip_load_plugin function.
+As the VIP Go Geo Uniques plugin requires configuration in code, we recommend loading this plugin using the `wpcom_vip_load_plugin` function.
 
 Download the plugin from the GitHub repo (https://github.com/Automattic/vip-go-geo-uniques), add it to your `plugins` folder, and then activate it for your site:
 	
@@ -34,13 +34,13 @@ wpcom_vip_load_plugin( 'vip-go-geo-uniques' );
 
 ## Configure the plugin
 
-To configure the plugin, you must set a default location using the VIP_Go_Geo_Uniques::set_default_location method. For example, to set the United States are the default:
+To configure the plugin, you must set a default location using the `VIP_Go_Geo_Uniques::set_default_location` method. For example, to set the United States are the default:
 
 ```
 VIP_Go_Geo_Uniques::set_default_location( 'US' );
 ```
 
-Next, configure each region using theVIP_Go_Geo_Uniques::add_location method. If a region is not set, visits from that region will use the default location. As an example, to create a geo unique region of the United Kingdom you would call:
+Next, configure each region using the `VIP_Go_Geo_Uniques::add_location` method. If a region is not set, visits from that region will use the default location. As an example, to create a geo unique region of the United Kingdom you would call:
 
 ```
 VIP_Go_Geo_Uniques::add_location( 'GB' );
@@ -85,7 +85,7 @@ Our country codes are supplied via the Maxmind GeoIP database, which implements 
 > Please note that “EU” and “AP” codes are only used when a specific country code has not been designated (see FAQ). Blocking or re-directing by “EU” or “AP” will only affect a small portion of IP addresses. Instead, you should list the countries you want to block/re-direct individually.
 > – GeoIP and ISO 3166 Country Codes
 
-At time of writing, the GeoIP pseudo  country codes are:
+At time of writing, the GeoIP pseudo country codes are:
 
  - AP,”Asia/Pacific Region”
  - A1,”Anonymous Proxy”
