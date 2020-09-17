@@ -4,6 +4,7 @@ This document is for sites running on VIP Go.
 
 ## Contents
 
+ - [Documentation Home](https://wpvip.com/documentation/vip-go/geo-targeting-on-vip-go/) 
  - [Overview](#overview)
  - [Loading the VIP Go Geo Uniques plugin](#loading-the-vip-go-geo-uniques-plugin)
  - [Configure the plugin](#configure-the-plugin)
@@ -46,7 +47,7 @@ Next, configure each region using the `VIP_Go_Geo_Uniques::add_location` method.
 VIP_Go_Geo_Uniques::add_location( 'GB' );
 ```
 
-The complete example below sets the default location as the US (US), and a further location as the UK (GB).
+The complete example below sets the default location as the US (`US`), and a further location as the UK (`GB`).
 
 ```
 //Configure the VIP Go Geo Uniques plugin
