@@ -71,7 +71,7 @@ class VIP_Go_Geo_Uniques {
 		}
 
 		add_action( 'send_headers', function() {
-			header('Vary: X-Country-Code');
+			header( 'Vary: X-Country-Code', false );
 		});
 	}
 }
