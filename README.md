@@ -50,12 +50,14 @@ VIP_Go_Geo_Uniques::add_location( 'GB' );
 The complete example below sets the default location as the US (`US`), and a further location as the UK (`GB`).
 
 ```
-//Configure the VIP Go Geo Uniques plugin
+// Configure the VIP Go Geo Uniques plugin
 if ( class_exists( 'VIP_Go_Geo_Uniques' ) ) {
     VIP_Go_Geo_Uniques::set_default_location( 'US' );
     VIP_Go_Geo_Uniques::add_location( 'GB' );
 }
 ```
+
+**Note:** `set_default_location` and `add_location` must be called before the `init` hook is fired, otherwise cache variance will not work.
 
 ## Serving geo-targeted content
 
