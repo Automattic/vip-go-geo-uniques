@@ -13,7 +13,8 @@ class VIP_Go_Geo_Uniques {
 	private static $supported_locations = array();
 
 	function __construct() {
-		add_action( 'init', array( $this, 'init' ), 1 );
+		// We want to give developers enough room for registering their supported locations. Run this late.
+		add_action( 'init', array( $this, 'init' ), 9999, 0 );
 	}
 
 	static function get_country_code() {
