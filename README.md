@@ -14,9 +14,11 @@ Tailor the content you serve to your visitors on a country by country basis.
 
 ## Overview
 
-Sites running on the WordPress VIP Platform can differentiate visitors from different countries. This makes it possible to tailor the content you serve to your visitors on a country by country basis, while still keeping the benefits of VIP's fast caching infrastructure.
-
 The features of the VIP Go Geo Uniques plugin are designed to work on a [VIP Platform environment](https://docs.wpvip.com/technical-references/vip-platform/environments/) and will not work as expected on a local development environment.
+
+This plugin can be used on a non-VIP platform host infrastructure, but only if the host infrastructure has the `$_SERVER['GEOIP_COUNTRY_CODE']` superglobal.
+
+Sites running on the WordPress VIP Platform with the  VIP Go Geo Uniques plugin can differentiate visitors from different countries. This plugin makes it possible to tailor the content you serve to your visitors on a country by country basis, while still keeping the benefits of VIP's fast caching infrastructure.
 
 Adding geo targeting to your VIP code takes two parts:
 
