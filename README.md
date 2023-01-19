@@ -1,32 +1,35 @@
-# Geo targeting on VIP Go
+# Geo-targeting on the WordPress VIP Platform
 
-This document is for sites running on VIP Go.
+Tailor the content you serve to your visitors on a country-by-country basis.
 
 ## Contents
 
- - [Documentation Home](https://wpvip.com/documentation/vip-go/geo-targeting-on-vip-go/) 
  - [Overview](#overview)
- - [Loading the VIP Go Geo Uniques plugin](#loading-the-vip-go-geo-uniques-plugin)
+ - [Activating the VIP Go Geo Uniques plugin](#activating-the-vip-go-geo-uniques-plugin)
  - [Configure the plugin](#configure-the-plugin)
  - [Serving geo-targeted content](#serving-geo-targeted-content)
- - [Caching for sites using geo targeting](#caching-for-sites-using-geo-targeting)
- - [Geo targeting and reverse proxies](#geo-targeting-and-reverse-proxies)
+ - [Caching for sites using geo-targeting](#caching-for-sites-using-geo-targeting)
+ - [Geo-targeting and reverse proxies](#geo-targeting-and-reverse-proxies)
  - [Unexpected country codes](#unexpected-country-codes)
 
 ## Overview
 
-VIP Go allows you to differentiate visitors from different countries, tailoring the content you serve to your visitors on a country by country basis, while still keeping the benefits of our fast caching infrastructure.
+The features of the VIP Go Geo Uniques plugin are designed to work on a [VIP Platform environment](https://docs.wpvip.com/technical-references/vip-platform/environments/) and will not work as expected on a local development environment.
 
-Adding geo targeting to your VIP Go code takes two parts:
+This plugin can be used on a non-VIP platform host infrastructure, but only if the host infrastructure has the `$_SERVER['GEOIP_COUNTRY_CODE']` superglobal.
+
+Sites running on the WordPress VIP Platform with the  VIP Go Geo Uniques plugin can differentiate visitors from different countries. This plugin makes it possible to tailor the content you serve to your visitors on a country by country basis, while still keeping the benefits of VIP's fast caching infrastructure.
+
+Adding geo-targeting to your VIP code takes two parts:
 
 1. Loading and configuring the VIP Go Geo Uniques plugin
-2. Serving geo targeted content
+2. Serving geo-targeted content
 
-## Loading the VIP Go Geo Uniques plugin
+## Activating the VIP Go Geo Uniques plugin
 
-As the VIP Go Geo Uniques plugin requires configuration in code, we recommend loading this plugin using the `wpcom_vip_load_plugin` function.
+Because the VIP Go Geo Uniques plugin requires configuration in code, we recommend [activating this plugin](https://docs.wpvip.com/how-tos/activate-plugins-through-code/#plugins-in-the-plugins-directory)  with the `wpcom_vip_load_plugin()` function.
 
-Download the plugin from the GitHub repo (https://github.com/Automattic/vip-go-geo-uniques), add it to your `plugins` folder, and then activate it for your site:
+Download the plugin from [the GitHub repo](https://github.com/Automattic/vip-go-geo-uniques), add it to your `/plugins` directory, and then activate it for your site:
 	
 ```
 // Load the VIP Go Geo Uniques plugin
@@ -71,30 +74,30 @@ if ( function_exists( 'vip_geo_get_country_code' ) && 'GB' == vip_geo_get_countr
 }
 ```
 
-## Caching for sites using geo targeting
+## Caching for sites using geo-targeting
 
-When you enable the VIP Go Geo Uniques plugin, your page cache is varied by country code. This means that, for each URL requested, we hold a separate copy of the page (i.e. the HTTP response) for each country in our page cache. When you update a post or page, all cached copies for all country codes are automatically invalidated. When you purge the cache for your whole site, the whole cache is still invalidated.
+When you enable the VIP Go Geo Uniques plugin, your page cache is varied by country code. This means that for each URL requested, we hold a separate copy of the page (i.e. the HTTP response) for each country in our page cache. When you update a post or page, all cached copies for all country codes are automatically invalidated. When you purge the cache for your whole site, the whole cache is still invalidated.
 
-## Geo targeting and reverse proxies
+## Geo-targeting and reverse proxies
 
-Geo targeting on VIP Go is not reliable if your site uses a reverse proxy.
+Geo-targeting on VIP is not reliable if your site uses a reverse proxy.
 
-This is because when a request comes via a reverse proxy, the remote IP address is that of the reverse proxy. The load balancers on VIP Go will assign the country code to the reverse proxy IP, and not the IP address of the end user; sometimes this may by chance be the right country for the end user, but many times it will not be.
+This is because when a request comes via a reverse proxy, the remote IP address is that of the reverse proxy. The load balancers on VIP will assign the country code to the reverse proxy IP and not the user's IP address. The correct country can be served to the end user by chance, but in most cases it will not be correct.
 
 ## Unexpected country codes
 
-Our country codes are supplied via the Maxmind GeoIP database, which implements special “pseudo country codes” for particular situations:
+Our country codes are supplied via the MaxMind GeoIP database, which implements special "pseudo country codes" for particular situations:
 
-> Please note that “EU” and “AP” codes are only used when a specific country code has not been designated (see FAQ). Blocking or re-directing by “EU” or “AP” will only affect a small portion of IP addresses. Instead, you should list the countries you want to block/re-direct individually.
-> – GeoIP and ISO 3166 Country Codes
+> Note: "EU" and "AP" codes are only used when a specific country code has not been designated (see FAQ). Blocking or re-directing by "EU" or "AP" will only affect a small portion of IP addresses. Instead, you should list the countries you want to block/re-direct individually.
+> - GeoIP and ISO 3166 Country Codes
 
 At time of writing, the GeoIP pseudo country codes are:
 
- - AP,”Asia/Pacific Region”
- - A1,”Anonymous Proxy”
- - A2,”Satellite Provider”
- - O1,”Other Country”
- - EU,”Europe”
+ - AP,"Asia/Pacific Region"
+ - A1,"Anonymous Proxy"
+ - A2,"Satellite Provider"
+ - O1,"Other Country"
+ - EU,"Europe"
 
 A common misconception is that the country code for the United Kingdom is UK, in fact it is GB.
 
