@@ -1,0 +1,57 @@
+{
+	"name": "automattic/vip-go-geo-uniques",
+	"description": "VIP Go Geo Uniques",
+	"license": "GPL-2.0-or-later",
+	"type": "wordpress-plugin",
+	"authors": [
+		{
+			"name": "Automattic",
+			"homepage": "https://automattic.com/"
+		}
+	],
+	"homepage": "https://github.com/Automattic/vip-go-geo-uniques/",
+	"support": {
+		"issues": "https://github.com/Automattic/vip-go-geo-uniques/issues",
+		"source": "https://github.com/Automattic/vip-go-geo-uniques"
+	},
+	"require": {
+		"php": ">=7.4",
+		"composer/installers": "^1.0 || ^2.0"
+	},
+	"require-dev": {
+		"automattic/vipwpcs": "^3",
+		"php-parallel-lint/php-parallel-lint": "^1.0",
+		"phpcompatibility/phpcompatibility-wp": "^2.1"
+	},
+	"config": {
+		"allow-plugins": {
+			"composer/installers": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		},
+		"sort-packages": true
+	},
+	"scripts": {
+		"cs": [
+			"@php ./vendor/bin/phpcs -q"
+		],
+		"cs-fix": [
+			"@php ./vendor/bin/phpcbf -q"
+		],
+		"i18n": [
+			"@php wp i18n make-pot . ./languages/vip-go-geo-uniques.pot"
+		],
+		"lint": [
+			"@php ./vendor/php-parallel-lint/php-parallel-lint/parallel-lint . -e php --exclude vendor --exclude .git"
+		],
+		"lint-ci": [
+			"@php ./vendor/php-parallel-lint/php-parallel-lint/parallel-lint . -e php --exclude vendor --exclude .git --checkstyle"
+		]
+	},
+	"scripts-descriptions": {
+		"cs": "Run PHP Code Sniffer",
+		"cs-fix": "Run PHP Code Sniffer and fix violations",
+		"i18n": "Generate a POT file for translation",
+		"lint": "Run PHP linting",
+		"lint-ci": "Run PHP linting and send results to stdout"
+	}
+}
