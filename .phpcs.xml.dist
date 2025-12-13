@@ -67,4 +67,19 @@
 		</properties>
 	</rule>
 
+	<!-- Allow PSR-4 naming in tests directory -->
+	<rule ref="WordPress.Files.FileName">
+		<exclude-pattern>tests/</exclude-pattern>
+	</rule>
+
+	<!-- Allow short ternary in test bootstrap -->
+	<rule ref="Universal.Operators.DisallowShortTernary">
+		<exclude-pattern>tests/bootstrap.php</exclude-pattern>
+	</rule>
+
+	<!-- Allow $_SERVER access in test bootstrap -->
+	<rule ref="WordPress.Security.ValidatedSanitizedInput">
+		<exclude-pattern>tests/bootstrap.php</exclude-pattern>
+	</rule>
+
 </ruleset>
