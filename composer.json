@@ -21,7 +21,14 @@
 	"require-dev": {
 		"automattic/vipwpcs": "^3",
 		"php-parallel-lint/php-parallel-lint": "^1.0",
-		"phpcompatibility/phpcompatibility-wp": "^2.1"
+		"phpcompatibility/phpcompatibility-wp": "^2.1",
+		"phpunit/phpunit": "^9",
+		"yoast/wp-test-utils": "^1.2"
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Automattic\\VIPGoGeoUniques\\Tests\\": "tests/"
+		}
 	},
 	"config": {
 		"allow-plugins": {
@@ -31,6 +38,8 @@
 		"sort-packages": true
 	},
 	"scripts": {
+		"coverage": "@php ./vendor/bin/phpunit --coverage-html ./.phpunit.cache/coverage-html",
+		"coverage-ci": "npx wp-env run tests-cli --env-cwd=wp-content/plugins/vip-go-geo-uniques ./vendor/bin/phpunit",
 		"cs": [
 			"@php ./vendor/bin/phpcs -q"
 		],
@@ -45,13 +54,21 @@
 		],
 		"lint-ci": [
 			"@php ./vendor/php-parallel-lint/php-parallel-lint/parallel-lint . -e php --exclude vendor --exclude .git --checkstyle"
-		]
+		],
+		"test:unit": "@php ./vendor/bin/phpunit --testsuite unit --testdox --no-coverage",
+		"test:integration": "npx wp-env run tests-cli --env-cwd=wp-content/plugins/vip-go-geo-uniques ./vendor/bin/phpunit --testsuite integration --no-coverage",
+		"test:integration-ms": "npx wp-env run tests-cli --env-cwd=wp-content/plugins/vip-go-geo-uniques /bin/bash -c 'WP_MULTISITE=1 ./vendor/bin/phpunit --testsuite integration --no-coverage'"
 	},
 	"scripts-descriptions": {
+		"coverage": "Run tests with code coverage reporting",
+		"coverage-ci": "Run integration tests with code coverage reporting in wp-env",
 		"cs": "Run PHP Code Sniffer",
 		"cs-fix": "Run PHP Code Sniffer and fix violations",
 		"i18n": "Generate a POT file for translation",
 		"lint": "Run PHP linting",
-		"lint-ci": "Run PHP linting and send results to stdout"
+		"lint-ci": "Run PHP linting and send results to stdout",
+		"test:unit": "Run unit tests",
+		"test:integration": "Run integration tests via wp-env",
+		"test:integration-ms": "Run integration tests in multisite mode via wp-env"
 	}
 }
