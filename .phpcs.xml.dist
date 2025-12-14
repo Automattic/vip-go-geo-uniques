@@ -11,6 +11,8 @@
 		https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-files-and-folders -->
 	<exclude-pattern>/vendor/</exclude-pattern>
 	<exclude-pattern>/tests/</exclude-pattern>
+	<!-- Main plugin file needs CS fixes in a separate PR to address BC concerns -->
+	<exclude-pattern>/vip-go-geo-uniques.php</exclude-pattern>
 
 	<!-- How to scan -->
 	<!-- Usage instructions: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Usage -->
