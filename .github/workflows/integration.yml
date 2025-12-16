@@ -40,8 +40,8 @@ jobs:
           # Check lowest supported WP version, with the lowest supported PHP.
           - wordpress: '6.4'
             php: '8.2'
-          # Check latest WP with the highest supported PHP.
-          - wordpress: 'latest'
+          # Check latest WP with the latest PHP.
+          - wordpress: 'master'
             php: 'latest'
       fail-fast: false
 
@@ -73,7 +73,7 @@ jobs:
       - name: Setup wp-env
         run: wp-env start
         env:
-          WP_ENV_CORE: WordPress/WordPress#${{ matrix.wordpress == 'latest' && 'master' || matrix.wordpress }}
+          WP_ENV_CORE: WordPress/WordPress#${{ matrix.wordpress }}
 
       - name: Run integration tests (single site)
         run: composer test:integration

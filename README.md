@@ -1,4 +1,13 @@
-# Geo-targeting on the WordPress VIP Platform
+# VIP Go Geo Uniques
+
+Stable tag: 0.1.0
+Requires at least: 6.4
+Tested up to: 6.9
+Requires PHP: 8.2
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Tags: geo, geolocation, geo-targeting, vip
+Contributors: automattic, wpcomvip
 
 Tailor the content you serve to your visitors on a country-by-country basis.
 
