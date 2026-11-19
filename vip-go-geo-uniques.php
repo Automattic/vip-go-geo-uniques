@@ -4,6 +4,7 @@
  * Description: Varnish-friendly way to handle geo-targetting of users at a specific set of locations.
  * Version: 0.1.01
  * Requires at least: 6.4
+ * Requires PHP: 8.2
  * Author: Automattic, WordPress VIP
  * License: GPLv2
  **/

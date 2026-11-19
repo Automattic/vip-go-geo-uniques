@@ -43,6 +43,9 @@ jobs:
           # Check lowest supported WP version, with the lowest supported PHP.
           - wordpress: '6.4'
             php: '8.2'
+          # Check the WP version in "Tested up to", with the highest supported PHP.
+          - wordpress: '7.1'
+            php: '8.5'
           # Check WordPress trunk with the highest supported PHP.
           - wordpress: 'master'
             php: '8.5'
