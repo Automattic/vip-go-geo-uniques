@@ -47,7 +47,7 @@
 			"@php ./vendor/bin/phpcbf -q"
 		],
 		"i18n": [
-			"@php wp i18n make-pot . ./languages/vip-go-geo-uniques.pot"
+			"@php wp i18n make-pot . ./languages/vip-go-geo-uniques.pot --slug=vip-go-geo-uniques"
 		],
 		"lint": [
 			"@php ./vendor/php-parallel-lint/php-parallel-lint/parallel-lint . -e php --exclude vendor --exclude .git"
