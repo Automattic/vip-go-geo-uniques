@@ -50,11 +50,9 @@ abstract class TestCase extends YoastTestCase {
 		$reflection = new \ReflectionClass( \VIP_Go_Geo_Uniques::class );
 
 		$default_location = $reflection->getProperty( 'default_location' );
-		$default_location->setAccessible( true );
 		$default_location->setValue( null, 'default' );
 
 		$supported_locations = $reflection->getProperty( 'supported_locations' );
-		$supported_locations->setAccessible( true );
 		$supported_locations->setValue( null, [] );
 	}
 }

@@ -39,7 +39,7 @@
 	},
 	"scripts": {
 		"coverage": "@php ./vendor/bin/phpunit --coverage-html ./.phpunit.cache/coverage-html",
-		"coverage-ci": "npx --no wp-env run tests-cli \"--env-cwd=wp-content/plugins/$(basename \"$(pwd)\")\" ./vendor/bin/phpunit",
+		"coverage-ci": "npx --no wp-env run cli \"--env-cwd=wp-content/plugins/$(basename \"$(pwd)\")\" ./vendor/bin/phpunit",
 		"cs": [
 			"@php ./vendor/bin/phpcs -q"
 		],
@@ -56,8 +56,8 @@
 			"@php ./vendor/php-parallel-lint/php-parallel-lint/parallel-lint . -e php --exclude vendor --exclude .git --checkstyle"
 		],
 		"test:unit": "@php ./vendor/bin/phpunit --testsuite unit --testdox --no-coverage",
-		"test:integration": "npx --no wp-env run tests-cli \"--env-cwd=wp-content/plugins/$(basename \"$(pwd)\")\" ./vendor/bin/phpunit --testsuite integration --no-coverage",
-		"test:integration-ms": "npx --no wp-env run tests-cli \"--env-cwd=wp-content/plugins/$(basename \"$(pwd)\")\" /bin/bash -c 'WP_MULTISITE=1 ./vendor/bin/phpunit --testsuite integration --no-coverage'"
+		"test:integration": "npx --no wp-env run cli \"--env-cwd=wp-content/plugins/$(basename \"$(pwd)\")\" ./vendor/bin/phpunit --testsuite integration --no-coverage",
+		"test:integration-ms": "npx --no wp-env run cli \"--env-cwd=wp-content/plugins/$(basename \"$(pwd)\")\" /bin/bash -c 'WP_MULTISITE=1 ./vendor/bin/phpunit --testsuite integration --no-coverage'"
 	},
 	"scripts-descriptions": {
 		"coverage": "Run tests with code coverage reporting",
