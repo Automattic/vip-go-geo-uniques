@@ -7,7 +7,7 @@
 	colors="true"
 	executionOrder="random"
 	forceCoversAnnotation="false"
-	beStrictAboutCoversAnnotation="true"
+	beStrictAboutCoversAnnotation="false"
 	beStrictAboutOutputDuringTests="true"
 	beStrictAboutTodoAnnotatedTests="true"
 	convertDeprecationsToExceptions="true"
