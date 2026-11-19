@@ -1,0 +1,7 @@
+{
+  "name": "vip-go-geo-uniques",
+  "private": true,
+  "devDependencies": {
+    "@wordpress/env": "^12.2.0"
+  }
+}
