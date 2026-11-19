@@ -10,7 +10,6 @@ on:
   push:
     branches:
       - develop
-      - trunk
     paths:
       - '.github/workflows/unit.yml'
       - '**.php'
