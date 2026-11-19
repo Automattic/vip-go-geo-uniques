@@ -79,21 +79,9 @@ if ( $is_integration ) {
 	// Load Composer autoloader.
 	require_once $vendor_dir . '/autoload.php';
 
-	// Stub add_action before loading the plugin file since the constructor uses it.
-	if ( ! function_exists( 'add_action' ) ) {
-		/**
-		 * Stub for add_action to allow loading the plugin.
-		 *
-		 * @param string   $hook_name     Hook name.
-		 * @param callable $callback      Callback function.
-		 * @param int      $priority      Priority.
-		 * @param int      $accepted_args Number of accepted arguments.
-		 * @return true
-		 */
-		function add_action( $hook_name, $callback, $priority = 10, $accepted_args = 1 ) { // phpcs:ignore Universal.NamingConventions.NoReservedKeywordParameterNames
-			return true;
-		}
-	}
+	// Define Brain Monkey's WordPress hook functions, such as add_action(), which the
+	// plugin file calls when it's loaded. Each test calls this again in its setUp().
+	\Brain\Monkey\setUp();
 
 	// Load the plugin file - we need the class definitions.
 	require_once dirname( __DIR__ ) . '/vip-go-geo-uniques.php';
