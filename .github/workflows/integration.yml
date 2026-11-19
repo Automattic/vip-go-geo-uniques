@@ -33,6 +33,9 @@ jobs:
 
     env:
       WP_VERSION: ${{ matrix.wordpress }}
+      # Without this, the tests run on the PHP version in .wp-env.json,
+      # whatever the matrix says.
+      WP_ENV_PHP_VERSION: ${{ matrix.php }}
 
     strategy:
       matrix:
@@ -42,7 +45,7 @@ jobs:
             php: '8.2'
           # Check latest WP with the highest supported PHP.
           - wordpress: 'latest'
-            php: 'latest'
+            php: '8.5'
       fail-fast: false
 
     steps:
