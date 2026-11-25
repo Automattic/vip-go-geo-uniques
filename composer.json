@@ -38,8 +38,8 @@
 		"sort-packages": true
 	},
 	"scripts": {
-		"coverage": "@php ./vendor/bin/phpunit --coverage-html ./.phpunit.cache/coverage-html",
-		"coverage-ci": "npx --no wp-env run tests-cli \"--env-cwd=wp-content/plugins/$(basename \"$(pwd)\")\" ./vendor/bin/phpunit",
+		"coverage": "@php ./vendor/bin/phpunit --testsuite unit --coverage-html ./.phpunit.cache/coverage-html",
+		"coverage-ci": "npx --no wp-env run tests-cli \"--env-cwd=wp-content/plugins/$(basename \"$(pwd)\")\" ./vendor/bin/phpunit --testsuite integration --coverage-text",
 		"cs": [
 			"@php ./vendor/bin/phpcs -q"
 		],
@@ -60,8 +60,8 @@
 		"test:integration-ms": "npx --no wp-env run tests-cli \"--env-cwd=wp-content/plugins/$(basename \"$(pwd)\")\" /bin/bash -c 'WP_MULTISITE=1 ./vendor/bin/phpunit --testsuite integration --no-coverage'"
 	},
 	"scripts-descriptions": {
-		"coverage": "Run tests with code coverage reporting",
-		"coverage-ci": "Run integration tests with code coverage reporting in wp-env",
+		"coverage": "Run unit tests with code coverage reporting",
+		"coverage-ci": "Run integration tests with code coverage reporting in wp-env (start it with --xdebug=coverage)",
 		"cs": "Run PHP Code Sniffer",
 		"cs-fix": "Run PHP Code Sniffer and fix violations",
 		"i18n": "Generate a POT file for translation",
