@@ -33,7 +33,7 @@ jobs:
     strategy:
       matrix:
         # The lowest supported PHP, and the latest.
-        php: ['8.2', '8.5']
+        php: ['8.2', '8.5', '8.6']
       fail-fast: false
 
     steps:
